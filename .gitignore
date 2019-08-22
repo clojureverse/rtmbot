@@ -1,0 +1,4 @@
+rtmbot.conf
+rtmbot.log
+*.py[cod]
+logs/*.txt
