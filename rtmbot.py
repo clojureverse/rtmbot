@@ -106,7 +106,7 @@ rtm_event_list = [
 def process_event(event_type, **payload):
     data = payload['data']
     data['type'] = event_type
-    with codecs.open(datetime.date.today().strftime('logs/%Y-%m-%d.txt'), 'ab', 'utf-8') as f:
+    with codecs.open(config["DESTINATION"] + datetime.date.today().strftime('%Y-%m-%d.txt'), 'ab', 'utf-8') as f:
         f.write(json.dumps(data))
         f.write("\n")
 
