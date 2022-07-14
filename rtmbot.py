@@ -10,8 +10,11 @@
 # line, for each event. Will log all events in the channels except for
 # "hello", "pong", and "user_typing".
 
+from pathlib import Path
 import sys
 sys.dont_write_bytecode = True
+this_file_dir = Path(__file__).parent.resolve()
+sys.path.insert(0, str(this_file_dir / "vendor"))
 
 import yaml
 import json
