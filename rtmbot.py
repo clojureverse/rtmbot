@@ -10,8 +10,11 @@
 # line, for each event. Will log all events in the channels except for
 # "hello", "pong", and "user_typing".
 
+from pathlib import Path
 import sys
 sys.dont_write_bytecode = True
+this_file_dir = Path(__file__).parent.resolve()
+sys.path.insert(0, str(this_file_dir / "vendor"))
 
 import yaml
 import json
@@ -122,7 +125,7 @@ def main_loop():
         logging.exception('Caught rtmbot exception.')
 
 if __name__ == "__main__":
-    config = yaml.load(open('rtmbot.conf', 'r'))
+    config = yaml.load(open('rtmbot.conf', 'r'), Loader=yaml.Loader)
     slack_token = config["SLACK_TOKEN"]
     rtm_client = slack.RTMClient(token=slack_token)
     for e in rtm_event_list:
